@@ -1,0 +1,26 @@
+
+Ejercicio 1:
+
+a) respuesta: 8 
+
+b) respuesta: 204
+
+Ejercicio 2:
+
+a) respuesta: 15
+
+b) respuesta: 66.25
+
+Ejercicio 3:
+
+a) respuesta: 10
+
+a) respuesta: 23.8888888888889
+
+Ejercicio 4:
+
+a) respuesta: 7
+
+b) respuesta: -4.3333333333333
+
+c) respuesta: -3.2666666666667
