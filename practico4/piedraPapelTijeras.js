@@ -34,11 +34,11 @@ function jugarPiedraPapelTijera(){
     let jugadaUsuario= obtenerJugadaUsuario();  
     let jugadaComputadora= obtenerJugadaComputadora();
     //imprimir la jugada
-    console.log("La computadora eligio: "+jugadaComputadora);
-    console.log("El usuario eligio: "+jugadaUsuario);
+    console.log("La computadora eligio: %s.",jugadaComputadora);
+    console.log("El usuario eligio: %s.",jugadaUsuario);
     //variable de quien gano
     let ganador=determinarGanador(jugadaComputadora,jugadaUsuario);
-    console.log("El resultado fue: "+ganador);
+    console.log("El resultado fue: %s.",ganador);
 }
 //llamado de la función jugarPiedraPapelTijera()
 jugarPiedraPapelTijera();
