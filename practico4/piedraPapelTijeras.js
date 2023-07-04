@@ -1,5 +1,8 @@
 const opcinesJuego=["piedra","papel","tijeras"];
 const posibleJugada=["Empate","Gana la computadora","Gana el usuario"];
+const readlineSync = require('readline-sync');
+//Cantidad de jugada
+const numeroJugada=readlineSync.question("Cuantas veces jugas: ");
 //Funcion de la Computadora
 function obtenerJugadaComputadora(){
     let jugadaObtenida;
@@ -8,8 +11,10 @@ function obtenerJugadaComputadora(){
 }
 //Función del Usuario
 function obtenerJugadaUsuario(){
-    const readlineSync = require('readline-sync');
-    let jugadaIngresada = readlineSync.question("Para este juego elija piedra, papel o tijeras: ");
+    let jugadaIngresada;
+    do{
+        jugadaIngresada = readlineSync.question("Para este juego elija piedra, papel o tijeras: ");
+    }while(jugadaIngresada!==opcinesJuego[0]&&jugadaIngresada!==opcinesJuego[1]&&jugadaIngresada!==opcinesJuego[2]);    
     return jugadaIngresada;
 }
 //Fución Ganador
@@ -30,15 +35,33 @@ function determinarGanador(jugadaComputadora,jugadaUsuario){
 }
 //funcíon jugar Piedra Papel o Tijera()
 function jugarPiedraPapelTijera(){
-    //Variable de cada jugada
-    let jugadaUsuario= obtenerJugadaUsuario();  
-    let jugadaComputadora= obtenerJugadaComputadora();
-    //imprimir la jugada
-    console.log("La computadora eligio: %s.",jugadaComputadora);
-    console.log("El usuario eligio: %s.",jugadaUsuario);
-    //variable de quien gano
-    let ganador=determinarGanador(jugadaComputadora,jugadaUsuario);
-    console.log("El resultado fue: %s.",ganador);
+    let cantGanadaComputadora=0;
+    let cantGanadaUsuario=0;
+    let ganador;
+    for(let i=0;i<numeroJugada;i++){
+        //Variable de cada jugada
+        let jugadaUsuario= obtenerJugadaUsuario();  
+        let jugadaComputadora= obtenerJugadaComputadora();
+        //imprimir la jugada
+        console.log("La computadora eligio: "+jugadaComputadora);
+        console.log("El usuario eligio: "+jugadaUsuario);
+        //variable de quien gano
+        ganador=determinarGanador(jugadaComputadora,jugadaUsuario);
+        if(ganador===posibleJugada[1]){
+            cantGanadaComputadora+=1;
+        }else if(ganador===posibleJugada[2]){
+            cantGanadaUsuario+=1;
+        }
+        console.log("La computadora: "+cantGanadaComputadora+" y el usuario: "+cantGanadaUsuario);
+    }
+    if(cantGanadaComputadora>cantGanadaUsuario){
+        ganador=posibleJugada[1];
+    }else if(cantGanadaUsuario>cantGanadaComputadora){
+        ganador=posibleJugada[2];
+    }else{
+        ganador=posibleJugada[0];
+    }
+    console.log("El resultado fue: "+ganador);
 }
 //llamado de la función jugarPiedraPapelTijera()
 jugarPiedraPapelTijera();
