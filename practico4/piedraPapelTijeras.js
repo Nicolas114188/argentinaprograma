@@ -2,7 +2,7 @@ const opcinesJuego=["piedra","papel","tijeras"];
 const posibleJugada=["Empate","Gana la computadora","Gana el usuario"];
 const readlineSync = require('readline-sync');
 //Cantidad de jugada
-const numeroJugada=readlineSync.question("Cuantas veces jugas: ");
+const numeroJugada=readlineSync.questionInt("Cuantas veces jugas: ");
 //Funcion de la Computadora
 function obtenerJugadaComputadora(){
     let jugadaObtenida;
@@ -37,11 +37,13 @@ function determinarGanador(jugadaComputadora,jugadaUsuario){
 function jugarPiedraPapelTijera(){
     let cantGanadaComputadora=0;
     let cantGanadaUsuario=0;
+    let jugadaUsuario;
+    let jugadaComputadora
     let ganador;
     for(let i=0;i<numeroJugada;i++){
         //Variable de cada jugada
-        let jugadaUsuario= obtenerJugadaUsuario();  
-        let jugadaComputadora= obtenerJugadaComputadora();
+        jugadaUsuario = obtenerJugadaUsuario();  
+        jugadaComputadora = obtenerJugadaComputadora();
         //imprimir la jugada
         console.log("La computadora eligio: "+jugadaComputadora);
         console.log("El usuario eligio: "+jugadaUsuario);
